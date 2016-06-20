@@ -19,16 +19,31 @@ app.get('/restaurants', function(request, response) {
 });
 
 app.get('/restaurants/:id', function(request, response) {
-    if (request.params.id == 1) {
-        fs.readFile(__dirname + "/data/menu.json", 'utf8', function(err, data) {
-            console.log("Menu:", data);
-            response.end(data);
+
+        fs.readFile(__dirname + "/data/restaurants.json", 'utf8', function(err, data) {
+            console.log("Restaurants:", data);
+            var restaurants = [];
+            data = JSON.parse(data);
+                for (var d = 0, len = data.length; d < len; d += 1) {
+
+                    console.log(data[d].locationId + " " + request.params.id);
+                    if (data[d].locationId == request.params.id) {
+                       restaurants.push(data[d]);
+                    }
+                }
+            console.log(JSON.stringify(restaurants));
+            if(restaurants.length > 0) {
+                response.end(JSON.stringify(restaurants));
+            }
+            else{
+                response.status(404)
+                    .send('Not found');
+            }
         });
-    }
-    else {
-        response.status(404)
-            .send('Not found');
-    }
+
+
+
+
 });
 
 app.get('/order', function(request, response) {
