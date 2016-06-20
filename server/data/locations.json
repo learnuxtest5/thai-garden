@@ -1,0 +1,24 @@
+{
+  "locations": [
+    {
+      "id": 1,
+      "name": "Blackrock"
+    },
+    {
+      "id": 2,
+      "name": "Dun Laoghaire"
+    },
+    {
+      "id": 3,
+      "name": "Kimmage"
+    },
+    {
+      "id": 4,
+      "name": "Rathmines"
+    },
+    {
+      "id": 5,
+      "name": "Templeogue"
+    }
+  ]
+}
