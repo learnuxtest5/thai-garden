@@ -11,35 +11,39 @@ app.get('/locations', function(request, response) {
     });
 });
 
-app.get('/restaurants', function(request, response) {
-    fs.readFile(__dirname + "/data/restaurants.json", 'utf8', function(err, data) {
-        console.log("Restaurants:", data);
-        response.end(data);
-    });
+app.get('/locations/:id', function(request, response) {
+    if (request.params.id == 1) {
+        fs.readFile(__dirname + "/data/restaurants.json", 'utf8', function(err, data) {
+            console.log("Locations:", data);
+            response.end(data);
+        });
+    } else {
+        response.status(404).send('Not found');
+    }
 });
 
 app.get('/restaurants/:id', function(request, response) {
 
-        fs.readFile(__dirname + "/data/restaurants.json", 'utf8', function(err, data) {
-            console.log("Restaurants:", data);
-            var restaurants = [];
-            data = JSON.parse(data);
-                for (var d = 0, len = data.length; d < len; d += 1) {
+    fs.readFile(__dirname + "/data/restaurants.json", 'utf8', function(err, data) {
+        console.log("Restaurants:", data);
+        var restaurants = [];
+        data = JSON.parse(data);
+        for (var d = 0, len = data.length; d < len; d += 1) {
 
-                    console.log(data[d].locationId + " " + request.params.id);
-                    if (data[d].locationId == request.params.id) {
-                       restaurants.push(data[d]);
-                    }
-                }
-            console.log(JSON.stringify(restaurants));
-            if(restaurants.length > 0) {
-                response.end(JSON.stringify(restaurants));
+            console.log(data[d].locationId + " " + request.params.id);
+            if (data[d].locationId == request.params.id) {
+                restaurants.push(data[d]);
             }
-            else{
-                response.status(404)
-                    .send('Not found');
-            }
-        });
+        }
+        console.log(JSON.stringify(restaurants));
+        if(restaurants.length > 0) {
+            response.end(JSON.stringify(restaurants));
+        }
+        else{
+            response.status(404)
+                .send('Not found');
+        }
+    });
 
 
 
@@ -53,7 +57,7 @@ app.get('/order', function(request, response) {
     });
 });
 
-app.post('/order', function(request, response) {
+app.post('/orders', function(request, response) {
     var newOrder = request.body;
     fs.readFile(__dirname + "/data/orders.json", 'utf8', function(err, data) {
         data = JSON.parse(data);
