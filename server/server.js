@@ -53,4 +53,6 @@ app.post('/order', function(request, response) {
     });
 });
 
-app.listen(8081);
+app.listen(8081, function() {
+    console.log("Express listening on port 8081...");
+});
