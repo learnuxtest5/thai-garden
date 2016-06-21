@@ -1,5 +1,5 @@
 var Orders = function () {
-    function placeOrder(orderItems, discount, orderType, address, collectionTime) {
+    function placeOrder(orderItems, discount, orderType, address, collectionTime, paymentType, cardNumber, cardType, expiryDate, custName, custPhone) {
         var data = {
             orderItems: orderItems,
             discount: discount,
@@ -12,8 +12,10 @@ var Orders = function () {
                 cardType: cardType,
                 expiryDate: expiryDate
             },
-            customerName: customerName,
-            customerPhoneNumber: customerPhoneNumber
+            customer: {
+                custName: custName,
+                custPhone: custPhone
+            }
         };
         data = JSON.stringify(data);
 
