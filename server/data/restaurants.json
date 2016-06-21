@@ -1,41 +1,36 @@
 [
   {
     "id": 1,
-    "name": "Thai Garden",
+    "name": "The Little Kitchen",
     "locationId": 1
   },
   {
     "id": 2,
-    "name": "Thai Garden",
+    "name": "Fish Shack Cafe",
     "locationId": 2
   },
   {
     "id": 3,
-    "name": "Thai Garden",
+    "name": "Mulberry Garden",
     "locationId": 3
   },
   {
     "id": 4,
-    "name": "Thai Garden",
+    "name": "Bloom Brasserie",
     "locationId": 4
   },
   {
     "id": 5,
-    "name": "Thai Garden",
+    "name": "Chapter One",
     "locationId": 5
   },
   {
     "id": 6,
-    "name": "Fish n Chips",
+    "name": "Sabor Brazil",
     "locationId": 6
   },
   {
     "id": 7,
-    "name": "Thai Garden 2",
-    "locationId": 6
-  },
-  {
-    "id": 8,
     "name": "The Tasty Supper",
     "locationId": 6
   }
