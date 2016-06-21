@@ -1,1 +1,33 @@
-[]
+[
+  {
+    "orderItems": [
+      {
+        "restaurantId": 1,
+        "categoryId": 199,
+        "itemId": 958,
+        "price": 13.95,
+        "quantity": 1,
+        "variations": [
+          {
+            "id": 2590,
+            "price": 13.95
+          }
+        ]
+      }
+    ],
+    "discount": 0.00,
+    "orderType": "Delivery",
+    "address": "One Waterside",
+    "collectionTime": "",
+    "paymentType": "Card",
+    "creditCard": {
+      "cardNumber": "0123456789012345",
+      "cardType": "Mastercard",
+      "expiryDate": "01/01/2017"
+    },
+    "customer": {
+      "custName": "John Smith",
+      "custPhone": "(01) 1234567"
+    }
+  }
+]
