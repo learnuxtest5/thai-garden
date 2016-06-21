@@ -1,0 +1,81 @@
+.main-content {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+
+    .grid {
+        border: solid 1px #e7e7e7;
+    }
+    .grid__row {
+        display: flex;
+        flex-direction: column;
+    }
+    .grid__centered {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        max-width: 50%;
+    }
+    .grid__item {
+        flex: 1;
+        padding: 12px;
+        border: solid 1px #e7e7e7;
+    }
+    @media all and (min-width: 480px) {
+        .grid__row--sm {
+            flex-direction: row;
+        }
+    }
+    @media all and (min-width: 720px) {
+        .grid__row--md {
+            flex-direction: row;
+        }
+    }
+    @media all and (min-width: 960px) {
+        .grid__row--lg {
+            flex-direction: row;
+        }
+    }
+    .flexbox-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+    }
+    .flexbox-center-item {
+        width: 300px;
+        background: #fefefe;
+        border-radius: 25px;
+
+
+    }
+
+    .centered{
+        align-items: center;
+        justify-content: center;
+    }
+
+    .header-border{
+        border-bottom: solid;
+        border-bottom-color: lightgray;
+        border-bottom-width: 1px;
+    }
+
+    .header-image-lg{
+        content:url("../img/ThaiGarden-Logo-Dsktop.png");
+        display: block; margin: 0 auto;
+    }
+    .header-image-md{
+        content:url("../img/ThaiGarden-Logo@2x.png");
+
+    }
+    .header-image-sm{
+        content:url("../img/ThaiGarden-Logo@1x.png");
+        display: block; margin: 0 auto;
+        padding-bottom: 10px;
+        padding-top: 5px;
+
+    }
+}

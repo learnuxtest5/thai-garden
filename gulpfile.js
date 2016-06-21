@@ -40,13 +40,18 @@ gulp.task('build:html', function () {
         .pipe(gulp.dest('dist/server/public/'));
 });
 
+gulp.task('build:img', function () {
+    gulp.src('client/src/img/**/*')
+    // Perform minification tasks, etc here
+        .pipe(gulp.dest('dist/server/public/img/'));
+});
 
 gulp.task('build:server', function () {
     gulp.src('server/**/*')
         .pipe(gulp.dest('dist/server'));
 });
 
-gulp.task('build', ['build:styles', 'build:scripts', 'build:html', 'build:server']);
+gulp.task('build', ['build:styles', 'build:scripts', 'build:html', 'build:server', 'build:img']);
 
 gulp.task('test', function () {
     gulp.src(['client/test/**/*.js','server/test/**/*.js' ]).pipe(jasmine());
