@@ -1,2 +1,1 @@
-var restaurantModel = new Restaurants();
-console.log(restaurantModel.getRestaurants(1));
+console.log(Restaurants.getRestaurants(1));

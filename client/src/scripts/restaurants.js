@@ -6,14 +6,12 @@ var Restaurants = function () {
         });
     };
 
+
     var buildTemplate = function (model) {};
 
-    return {
-        getRestaurants: function (locationId) {
-            getRestaurants(locationId);
-        },
-        buildTemplate: function (model) {
-            buildTemplate(model);
-        }
+
+    return{
+        getRestaurants : getRestaurants,
+        buildTemplate : buildTemplate
     }
 }();
