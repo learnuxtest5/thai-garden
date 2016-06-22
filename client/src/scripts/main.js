@@ -1,25 +1,25 @@
-
 $(document).ready(function() {
 
-    Locations.getLocations().then(function(response) {
+    LocationController.getLocations().then(function(response) {
         console.log("Locations", response);
         console.log(loadPage("templates/locations.html"));
         buildTemplate(null, loadPage("templates/locations.html"), "content-container");
     });
 
-    Restaurants.getRestaurants(1).then(function(response) {
+    RestaurantController.getRestaurants(1).then(function(response) {
         console.log("Restaurants", response);
     });
 
-    Menus.getMenu(1).then(function(response) {
+    MenuController.getMenu(1).then(function(response) {
         console.log("Menu", response);
     });
 
-    Orders.addItemToOrder(1, 199, 958, 13.95, 1, []);
+    OrderController.addItemToOrder(1, 199, 958, 13.95, 1, []);
+    OrderController.addItemToOrder(2, 199, 958, 13.95, 1, []);
     sessionStorage.getItem('orderItems');
 
-    Orders.sendOrder().then(function(response) {
-        console.log("Order ", response);
+    OrderController.sendOrder().then(function(response) {
+        console.log("Order", response);
         console.log("Order Number", response.orderNumber);
     });
 });
@@ -33,7 +33,7 @@ function loadPage(href)
 }
 function buildTemplate(model, template, documentContainerId){
     document.getElementById(documentContainerId).innerHTML = template;
-    Locations.getLocations();
+    LocationController.getLocations();
     outputTemplate("restaurant");
 
 };

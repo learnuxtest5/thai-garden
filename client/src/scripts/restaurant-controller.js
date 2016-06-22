@@ -1,4 +1,4 @@
-var Restaurants = function () {
+var RestaurantController = function () {
 
     var getRestaurants = function (locationId) {
         return fetch('/locations/' + locationId).then(function (response) {

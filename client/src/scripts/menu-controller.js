@@ -1,4 +1,4 @@
-var Menus = function () {
+var MenuController = function () {
 
     function getMenu(restaurantId) {
         return fetch('/restaurants/' + restaurantId).then(function (response) {

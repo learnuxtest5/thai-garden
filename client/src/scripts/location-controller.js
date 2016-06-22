@@ -1,4 +1,4 @@
-var Locations = function() {
+var LocationController = function() {
     
     function getLocations(){
         return fetch('/locations').then(function(response) {

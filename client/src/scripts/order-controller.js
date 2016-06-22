@@ -1,4 +1,4 @@
-var Orders = function () {
+var OrderController = function () {
 
     function retrieveOrderItems() {
         var orderItems = sessionStorage.getItem('orderItems');
