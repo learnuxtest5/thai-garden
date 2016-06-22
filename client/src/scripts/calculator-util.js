@@ -7,7 +7,8 @@ var Calculator = function() {
             var itemCost = parseFloat(cartItems[i].price) * parseInt(cartItems[i].quantity);
 
             for (var j=0; j < cartItems[i].variations.length; j++) {
-                itemCost += parseFloat(cartItems[i][j].price);
+                itemCost = itemCost + parseFloat(cartItems[i].variations[j].price);
+                console.log('itemCost with variation is ' + itemCost);
             }
 
             totalCost += itemCost;

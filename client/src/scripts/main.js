@@ -18,7 +18,7 @@ $(document).ready(function() {
     sessionStorage.getItem('cart.items');
     sessionStorage.getItem('cart.totalPrice');
 
-    OrderController.addItemToCart(2, 199, 234, 10, 5, []);
+    OrderController.addItemToCart(2, 199, 234, 10, 5, [{id: 976, price: 3.50}, {id: 975, price: 5.75}]);
     sessionStorage.getItem('cart.items');
     sessionStorage.getItem('cart.totalPrice');
 
@@ -31,6 +31,8 @@ $(document).ready(function() {
         console.log("Order Number", response.orderNumber);
         console.log("Order Price", response.totalPrice);
     });
+    sessionStorage.getItem('cart.items');
+    sessionStorage.getItem('cart.totalPrice');
 });
 
 function loadPage(href)

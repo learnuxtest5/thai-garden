@@ -25,9 +25,9 @@ var OrderController = function () {
 
     function sendOrder(discount, orderType, address, collectionTime, paymentType, cardNumber, cardType, expiryDate, custName, custPhone) {
         var data = {
-            orderItems: retrieveCartItems(),
+            orderItems: retrieveCart().items,
             discount: discount,
-            totalPrice: retrieveTotalPrice(),
+            totalPrice: retrieveCart().totalPrice,
             orderType: orderType,
             address: address,
             collectionTime: collectionTime,
@@ -52,11 +52,9 @@ var OrderController = function () {
                 },
                 body: data
             }).then(function (response) {
-            clearCart();
-            return response.json();
-        }).catch(function (error) {
-            // error
-        });
+                clearCart();
+                return response.json();
+            });
     }
 
     function retrieveCart() {
@@ -76,7 +74,7 @@ var OrderController = function () {
 
         return {
             items: items,
-            totalPrice: totalPrice
+            totalPrice: parseFloat(totalPrice).toFixed(2)
         };
     }
 
