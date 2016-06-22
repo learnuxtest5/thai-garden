@@ -16,6 +16,7 @@
       }
     ],
     "discount": 0.00,
+    "totalPrice": 10.00,
     "orderType": "Delivery",
     "address": "One Waterside",
     "collectionTime": "",
