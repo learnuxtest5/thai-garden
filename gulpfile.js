@@ -37,7 +37,7 @@ gulp.task('build:vendor-scripts', function () {
 });
 
 gulp.task('build:html', function () {
-    gulp.src('client/src/html/index.html')
+    gulp.src('client/src/html/**/*')
         .pipe(gulp.dest('dist/server/public/'));
 });
 
