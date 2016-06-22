@@ -1,16 +1,45 @@
 var Orders = function () {
 
-    function addItemToOrder() {
-        // TODO: update localStorage with order object
+    function retrieveOrderItems() {
+        var orderItems = sessionStorage.getItem('orderItems');
+        if (!orderItems) { // check if an item is already registered
+            orderItems = []; // if not, we initiate an empty array
+        } else {
+            orderItems = JSON.parse(orderItems); // else parse whatever is in
+        }
+        return orderItems;
     }
 
-    function removeItemFromOrder() {
-        // TODO: remove order object from localStorage
+    function updateOrderItems(orderItems) {
+        sessionStorage.setItem('orderItems', JSON.stringify(orderItems));
     }
 
-    function sendOrder(orderItems, discount, orderType, address, collectionTime, paymentType, cardNumber, cardType, expiryDate, custName, custPhone) {
+    function addItemToOrder(restaurantId, categoryId, itemId, price, quantity, variations) {
+        var orderItems = retrieveOrderItems();
+        orderItems.push({
+            restaurantId: restaurantId,
+            categoryId: categoryId,
+            itemId: itemId,
+            price: price,
+            quantity: quantity,
+            variations: variations
+        });
+        updateOrderItems(orderItems);
+    }
+
+    function removeItemFromOrder(itemId) {
+        var orderItems = retrieveOrderItems();
+        for (var i=0; i < orderItems.length; i++) {
+            if (orderItems[i].itemId == itemId) {
+                orderItems.splice(i, 1);
+            }
+        }
+        updateOrderItems(orderItems);
+    }
+
+    function sendOrder(discount, orderType, address, collectionTime, paymentType, cardNumber, cardType, expiryDate, custName, custPhone) {
         var data = {
-            orderItems: orderItems,
+            orderItems: retrieveOrderItems(),
             discount: discount,
             orderType: orderType,
             address: address,
@@ -31,6 +60,9 @@ var Orders = function () {
         fetch('/orders',
         {
             method: "POST",
+            headers: {
+                "Content-type": "application/json"
+            },
             body: data
         }).then(function (response) {
             return response.confirmationCode;
