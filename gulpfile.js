@@ -1,10 +1,10 @@
 var gulp = require('gulp'),
     concat = require('gulp-concat'),
-    jasmine = require('gulp-jasmine'),
     less = require('gulp-less'),
     rename = require('gulp-rename'),
     uglify = require('gulp-uglify'),
     del = require('del'),
+    Jasmine = require('jasmine'),
     runSequence = require('run-sequence');
 
 gulp.task('default', function () {
@@ -60,6 +60,18 @@ gulp.task('build', [
     'build:img']);
 
 gulp.task('test', function () {
-    gulp.src(['client/test/**/*.js', 'server/test/**/*.js'])
-        .pipe(jasmine());
+    var jasmine = new Jasmine();
+
+    jasmine.loadConfig({
+        spec_dir: 'client',
+        spec_files: [
+            'test/**/*-spec.js'
+        ],
+        helpers: [
+            'src/**/*-controller.js',
+            'src/**/*-util.js'
+        ]
+    });
+
+    jasmine.execute();
 });
