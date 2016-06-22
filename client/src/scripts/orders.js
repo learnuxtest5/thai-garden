@@ -65,12 +65,12 @@ var Orders = function () {
         {
             method: "POST",
             headers: {
-                "Content-type": "application/json"
+                "Content-Type": "application/json"
             },
             body: data
         }).then(function (response) {
             clearOrderItems();
-            return response;
+            return response.json();
         }).catch(function(error) {
             // error
         });
