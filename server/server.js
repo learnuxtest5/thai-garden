@@ -60,6 +60,10 @@ app.post('/orders', function (request, response) {
 });
 
 app.use(express.static(__dirname + '/public'));
+app.use(function(request, response, next) {
+    response.setHeader('Content-Type', 'application/json')
+    next();
+});
 
 app.listen(8081, function () {
     console.log("Express listening on port 8081...");
