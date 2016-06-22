@@ -41,17 +41,21 @@ app.get('/restaurants/:id', function (request, response) {
 
 // POST an order
 app.post('/orders', function (request, response) {
-    var newOrder = request.body;
     fs.readFile(__dirname + "/data/orders.json", 'utf8', function (err, data) {
+        var newOrder = request.body;
+        //newOrder.confirmationCode = Math.floor(Math.random());
+        newOrder.confirmationCode = 123456;
+
         data = JSON.parse(data);
         data.push(newOrder);
-        response.end(JSON.stringify(data));
 
         fs.writeFile(__dirname + "/data/orders.json", JSON.stringify(data), function (err) {
             if (err) {
                 return console.error(err);
             }
         });
+
+        response.end(JSON.stringify(newOrder));
     });
 });
 
