@@ -1,13 +1,13 @@
 var gulp = require('gulp'),
+    concat = require('gulp-concat'),
+    jasmine = require('gulp-jasmine'),
     less = require('gulp-less'),
     rename = require('gulp-rename'),
-    gp_concat = require('gulp-concat'),
-    gp_uglify = require('gulp-uglify'),
+    uglify = require('gulp-uglify'),
     del = require('del'),
-    jasmine = require('gulp-jasmine'),
     runSequence = require('run-sequence');
 
-gulp.task('default', function() {
+gulp.task('default', function () {
     runSequence('clean', 'build', 'test');
 });
 
@@ -25,8 +25,14 @@ gulp.task('build:styles', function () {
 
 gulp.task('build:scripts', function () {
     gulp.src('client/src/scripts/**/*.js')
-        .pipe(gp_concat('main.js'))
-        .pipe(gp_uglify())
+        .pipe(concat('main.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest('dist/server/public/scripts/'));
+});
+
+gulp.task('build:vendor-scripts', function () {
+    gulp.src(['node_modules/jquery/dist/jquery.js'])
+        .pipe(concat('vendors.js'))
         .pipe(gulp.dest('dist/server/public/scripts/'));
 });
 
@@ -48,6 +54,7 @@ gulp.task('build:server', function () {
 gulp.task('build', [
     'build:styles',
     'build:scripts',
+    'build:vendor-scripts',
     'build:html',
     'build:server',
     'build:img']);

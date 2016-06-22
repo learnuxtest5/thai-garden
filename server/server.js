@@ -42,11 +42,11 @@ app.get('/restaurants/:id', function (request, response) {
 // POST an order
 app.post('/orders', function (request, response) {
     fs.readFile(__dirname + "/data/orders.json", 'utf8', function (err, data) {
-        var newOrder = request.body;
-        //newOrder.confirmationCode = Math.floor(Math.random());
-        newOrder.confirmationCode = 123456;
-
         data = JSON.parse(data);
+
+        var newOrder = request.body;
+        newOrder.orderNumber = data.length + 1;
+
         data.push(newOrder);
 
         fs.writeFile(__dirname + "/data/orders.json", JSON.stringify(data), function (err) {

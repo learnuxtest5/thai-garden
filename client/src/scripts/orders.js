@@ -14,6 +14,10 @@ var Orders = function () {
         sessionStorage.setItem('orderItems', JSON.stringify(orderItems));
     }
 
+    function clearOrderItems() {
+        sessionStorage.removeItem('orderItems');
+    }
+
     function addItemToOrder(restaurantId, categoryId, itemId, price, quantity, variations) {
         var orderItems = retrieveOrderItems();
         orderItems.push({
@@ -57,7 +61,7 @@ var Orders = function () {
         };
         data = JSON.stringify(data);
 
-        fetch('/orders',
+        return fetch('/orders',
         {
             method: "POST",
             headers: {
@@ -65,7 +69,8 @@ var Orders = function () {
             },
             body: data
         }).then(function (response) {
-            return response.confirmationCode;
+            clearOrderItems();
+            return response;
         }).catch(function(error) {
             // error
         });
