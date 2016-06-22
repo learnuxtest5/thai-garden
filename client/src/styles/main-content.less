@@ -48,12 +48,17 @@
     }
     .flexbox-center-item {
         width: 300px;
-        background: #fefefe;
-        border-radius: 10px;
+
+
     }
 
     .flexbox-content-container {
         padding: 10px 10px 10px 10px;
+        background: rgb(255, 255, 255); /* Fall-back for browsers that don't
+                                    support rgba */
+        background: rgba(255, 255, 255, .7);
+        border-bottom-right-radius: 10px;
+        border-bottom-left-radius: 10px;
     }
 
     .centered{
@@ -63,8 +68,11 @@
 
     .header-border{
         border-bottom: solid;
-        border-bottom-color: lightgray;
+        border-bottom-color: dimgray;
         border-bottom-width: 1px;
+        background-color: white;
+        border-top-right-radius: 10px;
+        border-top-left-radius: 10px;
     }
 
     .header-image-lg{
