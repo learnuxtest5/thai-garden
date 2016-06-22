@@ -24,8 +24,10 @@
         border: solid 1px #e7e7e7;
     }
     @media all and (min-width: 480px) {
-        .grid__row--sm {
-            flex-direction: row;
+        #clip {
+            position: absolute;
+            clip: rect(0, 100px, 200px, 0);
+            /* clip: shape(top, right, bottom, left); NB 'rect' is the only available option */
         }
     }
     @media all and (min-width: 720px) {
@@ -47,9 +49,11 @@
     .flexbox-center-item {
         width: 300px;
         background: #fefefe;
-        border-radius: 25px;
+        border-radius: 10px;
+    }
 
-
+    .flexbox-content-container {
+        padding: 10px 10px 10px 10px;
     }
 
     .centered{

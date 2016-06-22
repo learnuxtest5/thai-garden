@@ -5,10 +5,35 @@
 @import (less) "order.less";
 @import (less) "restaurants.less";
 
-html, body {
-  height: 100%;
-  margin: 0px;
-  background-image: url("../img/background.jpg");
-  background-color: #cccccc;
-
+@media only screen and (max-device-width: 600px) {
+  html, body {
+    height: 100%;
+    margin: 0px;
+    background-image: url("../img/background-mobile.jpg");
+    background-color: #cccccc;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
 }
+
+/* For devices 400px and larger: */
+@media only screen and (min-device-width: 600px) {
+  html, body {
+    height: 100%;
+    margin: 0px;
+    background-image: url("../img/background.jpg");
+    background-color: #cccccc;
+    background-size:  auto;
+    background-repeat: no-repeat;
+
+  }
+  .background-mobile {
+    display:none;
+  }
+}
+
+
+
