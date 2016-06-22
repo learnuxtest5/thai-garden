@@ -2,20 +2,20 @@ var Calculator = function() {
 
     function calculateTotal(cartItems) {
         var totalCost = 0.00;
+
         for (var i=0; i < cartItems.length; i++) {
-            var cartItemCost = parseFloat(cartItems[i].price) * parseInt(cartItems[i].quantity);
-            console.log('item cost', cartItemCost);
+            var itemCost = parseFloat(cartItems[i].price) * parseInt(cartItems[i].quantity);
+
             for (var j=0; j < cartItems[i].variations.length; j++) {
-                cartItemCost += parseFloat(cartItems[i][j].price);
-                console.log('updating item cost, adding ' +  parseFloat(cartItems[i][j].price), cartItemCost);
+                itemCost += parseFloat(cartItems[i][j].price);
             }
-            console.log('updating total cost with item cost ' + cartItemCost, totalCost);
-            totalCost += cartItemCost;
+
+            totalCost += itemCost;
         }
-        return totalCost;
+        return totalCost.toFixed(2);
     }
 
     return {
         calculateTotal: calculateTotal
     }
-}
+}();
