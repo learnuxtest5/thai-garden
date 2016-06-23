@@ -1,6 +1,5 @@
 var Router = function () {
-
-
+    
     $(window).on('hashchange', routePage);
 
     function routePage() {
