@@ -20,7 +20,7 @@
             </div>
             <div id="content-container" class="flexbox-content-container"></div>
 
-            <nav id="drawer">
+            <nav id="shopping-cart" class="hidden">
                 <h2>Your Order</h2>
 
                 <table>
@@ -29,8 +29,10 @@
                         <td>$11.50</td>
                     </tr>
                     <tr>
-                        <td>Coupon (20% off)</td>
-                        <td>$2.30</td>
+                        <td>Coupon</td>
+                        <td class="coupon-value">
+                            <input type="text"/>
+                        </td>
                     </tr>
                     <tr>
                         <td>Total</td>
@@ -38,71 +40,67 @@
                     </tr>
                 </table>
 
-                <button class="proceed-checkout">Proceed to Checkout</button>
+                <button class="proceed-button">Proceed to Checkout</button>
 
-                <h2>Checkout</h2>
+                <div id="checkout-details" class="hidden">
 
-                <table>
-                    <tr class="cart-section">
-                        <td>Order</td>
-                        <td class="order-type">
-                            <input type="radio" name="orderType" value="Collection" checked> Collection<br>
-                            <input type="radio" name="orderType" value="Delivery"> Delivery<br>
-                        </td>
-                    </tr>
-                    <tr class="cart-section">
-                        <td>Delivery Address</td>
-                        <td class="delivery-address">
-                            <input type="text"/>
-                        </td>
-                    </tr>
-                    <tr class="cart-section">
-                        <td>Collect at</td>
-                        <td class="collection-time">
-                            <select>
-                                <option value="ASAP" selected>ASAP</option>
-                                <option value="9.00">9am</option>
-                                <option value="10.00">10am</option>
-                                <option value="11.00">11am</option>
-                                <option value="12.00">12pm</option>
-                                <option value="13.00">1pm</option>
-                                <option value="14.00">2pm</option>
-                                <option value="15.00">3pm</option>
-                                <option value="16.00">4pm</option>
-                                <option value="17.00">5pm</option>
-                                <option value="18.00">6pm</option>
-                                <option value="19.00">7pm</option>
-                                <option value="20.00">8pm</option>
-                                <option value="21.00">9pm</option>
-                                <option value="22.00">10pm</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr class="cart-section">
-                        <td>Pay with</td>
-                        <td class="payment-type">
-                            <input type="radio" name="paymentType" value="Cash" checked> Cash<br>
-                            <input type="radio" name="paymentType" value="Card"> Credit/Debit Card<br>
+                    <h2>Checkout</h2>
 
-                            <input id="card-number" placeholder="Card Number" type="text"/>
-                            <input id="card-type" placeholder="Card Type" type="text"/>
-                        </td>
-                    </tr>
-                    <tr class="cart-section">
-                        <td>Name</td>
-                        <td class="customer-name">
-                            <input type="text"/>
-                        </td>
-                    </tr>
-                    <tr class="cart-section">
-                        <td>Mobile No.</td>
-                        <td class="customer-phone">
-                            <input type="text"/>
-                        </td>
-                    </tr>
-                </table>
+                    <table>
+                        <tr>
+                            <td>Order</td>
+                            <td class="order-type">
+                                <input type="radio" name="orderType" value="Collection" checked> Collection<br>
+                                <input type="radio" name="orderType" value="Delivery"> Delivery<br>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Delivery Address</td>
+                            <td class="delivery-address">
+                                <input type="text"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Collect at</td>
+                            <td class="collection-time">
+                                <select>
+                                    <option value="ASAP" selected>ASAP</option>
+                                    <option value="30">+30 mins</option>
+                                    <option value="60">+1 hour</option>
+                                    <option value="90">+1 1/2 hours</option>
+                                    <option value="120">+2 hours</option>
+                                    <option value="150">+2 1/2 hours</option>
+                                    <option value="180">+3 hours</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Pay with</td>
+                            <td class="payment-type">
+                                <input type="radio" name="paymentType" value="Cash" checked> Cash<br>
+                                <input type="radio" name="paymentType" value="Card"> Credit/Debit Card<br>
 
-                <button class="place-order">Place Order</button>
+                                <input id="card-number" placeholder="Card Number" type="text"/>
+                                <input id="card-type" placeholder="Card Type" type="text"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Name</td>
+                            <td class="customer-name">
+                                <input type="text"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Mobile No.</td>
+                            <td class="customer-phone">
+                                <input type="text"/>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <button class="place-order">Place Order</button>
+
+                </div>
             </nav>
         </div>
     </div>
