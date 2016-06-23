@@ -1,10 +1,10 @@
 var gulp = require('gulp'),
     concat = require('gulp-concat'),
-    jasmine = require('gulp-jasmine'),
     less = require('gulp-less'),
     rename = require('gulp-rename'),
     uglify = require('gulp-uglify'),
     del = require('del'),
+    Jasmine = require('jasmine'),
     runSequence = require('run-sequence');
 
 gulp.task('default', function () {
@@ -20,35 +20,35 @@ gulp.task('build:styles', function () {
         .pipe(less().on('error', function (err) {
             console.log(err);
         }))
-        .pipe(gulp.dest('dist/server/public/styles/'));
+        .pipe(gulp.dest('dist/public/styles/'));
 });
 
 gulp.task('build:scripts', function () {
     gulp.src('client/src/scripts/**/*.js')
         .pipe(concat('main.js'))
         .pipe(uglify())
-        .pipe(gulp.dest('dist/server/public/scripts/'));
+        .pipe(gulp.dest('dist/public/scripts/'));
 });
 
 gulp.task('build:vendor-scripts', function () {
     gulp.src(['node_modules/jquery/dist/jquery.js'])
         .pipe(concat('vendors.js'))
-        .pipe(gulp.dest('dist/server/public/scripts/'));
+        .pipe(gulp.dest('dist/public/scripts/'));
 });
 
 gulp.task('build:html', function () {
     gulp.src('client/src/html/**/*')
-        .pipe(gulp.dest('dist/server/public/'));
+        .pipe(gulp.dest('dist/public/'));
 });
 
 gulp.task('build:img', function () {
     gulp.src('client/src/img/**/*')
-        .pipe(gulp.dest('dist/server/public/img/'));
+        .pipe(gulp.dest('dist/public/img/'));
 });
 
 gulp.task('build:server', function () {
     gulp.src('server/**/*')
-        .pipe(gulp.dest('dist/server'));
+        .pipe(gulp.dest('dist/'));
 });
 
 gulp.task('build', [
@@ -60,6 +60,18 @@ gulp.task('build', [
     'build:img']);
 
 gulp.task('test', function () {
-    gulp.src(['client/test/**/*.js', 'server/test/**/*.js'])
-        .pipe(jasmine());
+    var jasmine = new Jasmine();
+
+    jasmine.loadConfig({
+        spec_dir: 'client',
+        spec_files: [
+            'test/**/*-spec.js'
+        ],
+        helpers: [
+            'src/**/*-controller.js',
+            'src/**/*-util.js'
+        ]
+    });
+
+    jasmine.execute();
 });

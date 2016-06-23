@@ -16,6 +16,7 @@
       }
     ],
     "discount": 0.00,
+    "totalPrice": 10.00,
     "orderType": "Delivery",
     "address": "One Waterside",
     "collectionTime": "",
@@ -28,6 +29,7 @@
     "customer": {
       "custName": "John Smith",
       "custPhone": "(01) 1234567"
-    }
+    },
+    "orderNumber": 1
   }
 ]
