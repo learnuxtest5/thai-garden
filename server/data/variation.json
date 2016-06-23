@@ -1,0 +1,8 @@
+"HasVariation": true,
+"HasExtras": false,
+"Variations": [
+{"id":2500,"Title":"Steamed Rice", "Price": 0},
+{"id":2501,"Title":"Brown Rice", "Price": 0},
+{"id":2502,"Title":"Coconut Rice", "Price": 0.75},
+{"id":2503,"Title":"Rice Noodles", "Price": 1.50} ,
+{"id":2504,"Title":"Egg Noodles", "Price": 1.00}]

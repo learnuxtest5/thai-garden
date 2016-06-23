@@ -1,92 +1,96 @@
 .main-content {
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-
-  .grid {
-    border: solid 1px #e7e7e7;
-  }
-  .grid__row {
-    display: flex;
-    flex-direction: column;
-  }
-  .grid__centered {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    max-width: 50%;
-  }
-  .grid__item {
-    flex: 1;
-    padding: 12px;
-    border: solid 1px #e7e7e7;
-  }
-  @media all and (min-width: 480px) {
-    #clip {
-      position: absolute;
-      clip: rect(0, 100px, 200px, 0);
-      /* clip: shape(top, right, bottom, left); NB 'rect' is the only available option */
-    }
-  }
-  @media all and (min-width: 720px) {
-    .grid__row--md {
-      flex-direction: row;
-    }
-  }
-  @media all and (min-width: 960px) {
-    .grid__row--lg {
-      flex-direction: row;
-    }
-  }
-  .flexbox-container {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100%;
-  }
-  .flexbox-center-item {
-    width: 500px;
-  }
 
-  .flexbox-content-container {
-    padding: 10px 10px 10px 10px;
-    background: rgb(255, 255, 255); // Fall-back for browsers that don't support rgba
-    background: rgba(255, 255, 255, .7);
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-  }
+    .grid {
+        border: solid 1px #e7e7e7;
+    }
+    .grid__row {
+        display: flex;
+        flex-direction: column;
+    }
+    .grid__centered {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        max-width: 50%;
+    }
+    .grid__item {
+        flex: 1;
+        padding: 12px;
+        border: solid 1px #e7e7e7;
+    }
+    @media all and (min-width: 480px) {
+        #clip {
+            position: absolute;
+            clip: rect(0, 100px, 200px, 0);
+            /* clip: shape(top, right, bottom, left); NB 'rect' is the only available option */
+        }
+    }
+    @media all and (min-width: 720px) {
+        .grid__row--md {
+            flex-direction: row;
+        }
+    }
+    @media all and (min-width: 960px) {
+        .grid__row--lg {
+            flex-direction: row;
+        }
+    }
+    .flexbox-container {
 
-  .centered {
-    align-items: center;
-    justify-content: center;
-  }
+        align-items: center;
+        justify-content: center;
+        height: 100%;
 
-  .header-border {
-    border-bottom: solid;
-    border-bottom-color: dimgray;
-    border-bottom-width: 1px;
-    background-color: white;
-    border-top-right-radius: 10px;
-    border-top-left-radius: 10px;
-  }
+    }
+    .flexbox-center-item {
+        width: 500px;
+        flex: 1;
 
-  .header-image-lg {
-    content: url("../img/ThaiGarden-Logo-Dsktop.png");
-    display: block;
-    margin: 0 auto;
-  }
-  .header-image-md {
-    content: url("../img/ThaiGarden-Logo@2x.png");
-  }
-  .header-image-sm {
-    content: url("../img/ThaiGarden-Logo@1x.png");
-    display: block;
-    margin: 0 auto;
-    padding-bottom: 10px;
-    padding-top: 5px;
-  }
+    }
+
+    .flexbox-content-container {
+        padding: 10px 10px 10px 10px;
+        background: rgb(255, 255, 255); /* Fall-back for browsers that don't
+                                    support rgba */
+        background: rgba(255, 255, 255, .5);
+        border-bottom-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+        flex: 1;
+    }
+
+    .centered{
+        align-items: center;
+        justify-content: center;
+    }
+
+    .header-border{
+        border-bottom: solid;
+        border-bottom-color: dimgray;
+        border-bottom-width: 1px;
+        background-color: white;
+        border-top-right-radius: 10px;
+        border-top-left-radius: 10px;
+        flex: 1;
+    }
+
+    .header-image-lg{
+        content:url("../img/ThaiGarden-Logo-Dsktop.png");
+        display: block; margin: 0 auto;
+    }
+    .header-image-md{
+        content:url("../img/ThaiGarden-Logo@2x.png");
+    }
+    .header-image-sm{
+        content:url("../img/ThaiGarden-Logo@1x.png");
+        display: block; margin: 0 auto;
+        padding-bottom: 10px;
+        padding-top: 5px;
+    }
 
   .cart-logo-md {
     content: url("../img/Shopping Basket icon@2x.png");
