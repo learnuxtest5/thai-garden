@@ -21,8 +21,13 @@ describe('calculator-util-spec', function() {
         };
 
         var cartItems = [];
-        cartItems.push(cartItem);
 
+        // add one item and check that price is updated
+        cartItems.push(cartItem);
         expect(Calculator.calculateTotal(cartItems)).toBe('39.50');
+
+        // remove item and check that price is updated
+        cartItems.splice(0, 1);
+        expect(Calculator.calculateTotal(cartItems)).toBe('0.00');
     });
 });
