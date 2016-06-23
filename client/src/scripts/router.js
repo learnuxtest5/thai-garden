@@ -34,18 +34,17 @@ var Router = function () {
                     if(response.length == 1){
                         MenuController.getMenu(response[0].id).then(function (response) {
                             //Utils.loadTemplate("templates/menu.html", response);
-                            console.log("Menu" +  JSON.stringify(response));
+                            //console.log("Menu" +  JSON.stringify(response));
                             document.getElementById("content-container").innerHTML = MenuController.getView(response);
-                            //console.log(loadPage("templates/locations.html"));
-
-                            //Utils.loadTemplate("templates/locations.html", response);
-
-
-                           /* $('body').on('click', '#locationList', function (event) {
-                                console.log(event.target.getAttribute("data-id"));
+                            $('body').on('click', '.menu-section-container', function (event) {
+                                //remove all other containers that are expanded
+                                $('.menu-item-expanded-container').remove();
+                                var menuItem = $('#' + event.target.id).data('menuItem');
+                                console.log(menuItem);
                                 // Add or Remove the class on clicking the table row
-                                window.location.hash = "restaurants/" + event.target.getAttribute("data-id");
-                            });*/
+                                $('#' + event.target.id).parent().next().after(MenuController.getExpandedView(menuItem));
+
+                            });
                         });
                     }
                     else{
