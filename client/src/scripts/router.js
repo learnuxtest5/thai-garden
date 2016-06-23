@@ -53,7 +53,7 @@ var Router = function () {
 
                                 }
                                 else if(event.target.className == "minus-image"){
-                                        
+
                                     console.log($('#' + event.target.id));
                                     var id = $('#' + event.target.id).data('id');
                                     var quantity = parseInt($('#quantity_' +id).data('quantity'));

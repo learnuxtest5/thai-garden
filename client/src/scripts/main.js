@@ -37,14 +37,24 @@ $(document).ready(function () {
 
         //TODO: validate inputs before they can proceed
 
-        var orderType = $('#checkout-details .order-type input:checked').text();
-        var deliveryAddress = $('#checkout-details .delivery-address input').text();
-        var collectionTime = $('#checkout-details .collection-time option:selected').text()
-        var paymentType = $('#checkout-details .payment-type input[type="radio"]:checked').text();
-        var cardNumber = $('#checkout-details .payment-type input#card-number').text();
-        var cardType = $('#checkout-details .payment-type input#card-type').text();
-        var name = $('#checkout-details .customer-name input').text();
-        var phoneNumber = $('#checkout-details .customer-phone input').text();
+        var orderType = $('input[name="orderType"]:checked', '#order-type').val();
+        var deliveryAddress = $('#delivery-address').val();
+        var collectionTime = $('#collection-time').val();
+        var paymentType = $('input[name="paymentType"]:checked', '#payment-type').val();
+
+        var cardNumber = $('.payment-type input#card-number').text();
+        var cardType = $('.payment-type input#card-type').text();
+        var name = $('.customer-name input').text();
+        var phoneNumber = $('.customer-phone input').text();
+
+        console.log('orderType', orderType);
+        console.log('address', deliveryAddress);
+        console.log('collectionTime', collectionTime);
+        console.log('paymentType', paymentType);
+        console.log('cardNumber', cardNumber);
+        console.log('cardType', cardType);
+        console.log('name', name);
+        console.log('phone', phoneNumber);
 
         OrderController.sendOrder(
             orderType, deliveryAddress, collectionTime,
@@ -54,6 +64,16 @@ $(document).ready(function () {
                 console.log("Confirmed order", JSON.parse(response));
         });
     });
+
+    $('.cancel-order').click(function() {
+        console.log('cancel order');
+
+        $('.proceed-button').removeClass('hidden');
+
+        $('#checkout-details').addClass('hidden');
+    });
+
+    // TODO: show hide card details depending on selected option
 });
 
 
