@@ -3,11 +3,7 @@ $(document).ready(function () {
     //trigger hash change to start the application
     $(window).trigger('hashchange');
     
-
-
-
-
-    OrderController.addItemToCart(1, 199, 123, 13.95, 2, []);
+    /*OrderController.addItemToCart(1, 199, 123, 13.95, 2, []);
     sessionStorage.getItem('cart.items');
     sessionStorage.getItem('cart.totalPrice');
 
@@ -18,15 +14,14 @@ $(document).ready(function () {
     OrderController.removeItemFromCart(234);
     sessionStorage.getItem('cart.items');
     sessionStorage.getItem('cart.totalPrice');
-
-
+    
     OrderController.sendOrder().then(function(response) {
         console.log("Order", response);
         console.log("Order Number", response.orderNumber);
         console.log("Order Price", response.totalPrice);
     });
     sessionStorage.getItem('cart.items');
-    sessionStorage.getItem('cart.totalPrice');
+    sessionStorage.getItem('cart.totalPrice');*/
 });
 
 

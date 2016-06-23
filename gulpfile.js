@@ -4,11 +4,10 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     uglify = require('gulp-uglify'),
     del = require('del'),
-    Jasmine = require('jasmine'),
     runSequence = require('run-sequence');
 
 gulp.task('default', function () {
-    runSequence('clean', 'build', 'test');
+    runSequence('clean', 'build');
 });
 
 gulp.task('clean', function () {
@@ -58,20 +57,3 @@ gulp.task('build', [
     'build:html',
     'build:server',
     'build:img']);
-
-gulp.task('test', function () {
-    var jasmine = new Jasmine();
-
-    jasmine.loadConfig({
-        spec_dir: 'client',
-        spec_files: [
-            'test/**/*-spec.js'
-        ],
-        helpers: [
-            'src/**/*-controller.js',
-            'src/**/*-util.js'
-        ]
-    });
-
-    jasmine.execute();
-});

@@ -35,7 +35,7 @@ app.get('/restaurants/:id', function (request, response) {
             response.end(JSON.stringify(data));
         });
     } else {
-        res.status(404).send('Not found');
+        response.status(404).send('Not found');
     }
 });
 

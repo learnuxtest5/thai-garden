@@ -1,5 +1,9 @@
 var OrderController = function () {
 
+    function addCoupon(percentage) {
+        sessionStorage.setItem('cart.discount', parseFloat(percentage));
+    }
+
     function addItemToCart(restaurantId, categoryId, itemId, price, quantity, variations) {
         var cartItems = retrieveCart().items;
         cartItems.push({
@@ -23,10 +27,10 @@ var OrderController = function () {
         updateCart(cartItems);
     }
 
-    function sendOrder(discount, orderType, address, collectionTime, paymentType, cardNumber, cardType, expiryDate, custName, custPhone) {
+    function sendOrder(orderType, address, collectionTime, paymentType, cardNumber, cardType, expiryDate, custName, custPhone) {
         var data = {
             orderItems: retrieveCart().items,
-            discount: discount,
+            discount: retrieveCart().discount,
             totalPrice: retrieveCart().totalPrice,
             orderType: orderType,
             address: address,
@@ -58,6 +62,13 @@ var OrderController = function () {
     }
 
     function retrieveCart() {
+        var discount = sessionStorage.getItem('cart.discount');
+        if(!discount) {
+            discount = 0.00;
+        } else {
+            discount = parseFloat(discount).toFixed(2);
+        }
+
         var items = sessionStorage.getItem('cart.items');
         if (!items) {
             items = [];
@@ -69,12 +80,13 @@ var OrderController = function () {
         if (!totalPrice) {
             totalPrice = 0.00;
         } else {
-            totalPrice = JSON.parse(totalPrice);
+            totalPrice = parseFloat(totalPrice).toFixed(2);
         }
 
         return {
+            discount: discount,
             items: items,
-            totalPrice: parseFloat(totalPrice).toFixed(2)
+            totalPrice: totalPrice
         };
     }
 
@@ -89,6 +101,7 @@ var OrderController = function () {
     }
 
     return {
+        addCoupon: addCoupon,
         addItemToCart: addItemToCart,
         removeItemFromCart: removeItemFromCart,
         sendOrder: sendOrder
