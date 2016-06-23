@@ -4,76 +4,71 @@ $(document).ready(function () {
     $(window).trigger('hashchange');
 
     $('[class^=cart-logo-]').click(function () {
-        console.log('show shopping cart');
-
         $('#shopping-cart').removeClass('hidden');
     });
 
     $('.hide-cart').click(function () {
-        console.log('hide shopping cart');
-
         $('#shopping-cart').addClass('hidden');
     });
 
     $('.add-coupon').click(function () {
-        console.log('add coupon');
-
-        var discount = $('.coupon-value input').text();
-        discount = parseFloat(discount) / 100.0;
-
+        var discount = parseFloat($('#coupon-value').val()) / 100.0;
         OrderController.addCoupon(discount);
     });
 
     $('.proceed-button').click(function () {
-        console.log('proceed to checkout');
-
         $('.proceed-button').addClass('hidden');
-
         $('#checkout-details').removeClass('hidden');
     });
 
+    $('.cancel-order').click(function() {
+        $('.proceed-button').removeClass('hidden');
+        $('#checkout-details').addClass('hidden');
+    });
+
     $('.place-order').click(function () {
-        console.log('place order');
-
-        //TODO: validate inputs before they can proceed
-
         var orderType = $('input[name="orderType"]:checked', '#order-type').val();
         var deliveryAddress = $('#delivery-address').val();
         var collectionTime = $('#collection-time').val();
         var paymentType = $('input[name="paymentType"]:checked', '#payment-type').val();
+        var cardNumber = $('input#card-number').val();
+        var cardType = $('#card-type').val();
+        var customerName = $('input#customer-name').val();
+        var customerPhone = $('input#customer-phone').val();
 
-        var cardNumber = $('.payment-type input#card-number').text();
-        var cardType = $('.payment-type input#card-type').text();
-        var name = $('.customer-name input').text();
-        var phoneNumber = $('.customer-phone input').text();
-
-        console.log('orderType', orderType);
-        console.log('address', deliveryAddress);
-        console.log('collectionTime', collectionTime);
-        console.log('paymentType', paymentType);
-        console.log('cardNumber', cardNumber);
-        console.log('cardType', cardType);
-        console.log('name', name);
-        console.log('phone', phoneNumber);
+        //TODO: validate inputs before they can proceed
 
         OrderController.sendOrder(
             orderType, deliveryAddress, collectionTime,
             paymentType, cardNumber, cardType,
-            name, phoneNumber).then(function (response) {
-            // show the confirmation when the order is placed
-                console.log("Confirmed order", JSON.parse(response));
+            customerName, customerPhone).then(function (response) {
+                console.log("Order Number", response.orderNumber);
         });
+
+        // TODO: clear inputs
+
+        // TODO: inform user that the order was successful
     });
 
-    $('.cancel-order').click(function() {
-        console.log('cancel order');
+    $('#order-type input').on('change', function() {
+        var selectedOrderType = $('input[name="orderType"]:checked', '#order-type').val();
 
-        $('.proceed-button').removeClass('hidden');
-
-        $('#checkout-details').addClass('hidden');
+        if (selectedOrderType === 'Delivery') {
+            $('#delivery-details').removeClass('invisible');
+        } else {
+            $('#delivery-details').addClass('invisible');
+        }
     });
 
-    // TODO: show hide card details depending on selected option
+    $('#payment-type input').on('change', function() {
+        var selectedPaymentType = $('input[name="paymentType"]:checked', '#payment-type').val();
+
+        if (selectedPaymentType === 'Card') {
+            $('#card-details').removeClass('invisible');
+        } else {
+            $('#card-details').addClass('invisible');
+        }
+    });
 });
 
 
