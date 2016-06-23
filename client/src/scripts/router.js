@@ -37,11 +37,58 @@ var Router = function () {
                             document.getElementById("content-container").innerHTML = MenuController.getView(response);
                             $('body').on('click', '.menu-section-container', function (event) {
                                 //remove all other containers that are expanded
-                                $('.menu-item-expanded-container').remove();
-                                var menuItem = $('#' + event.target.id).data('menuItem');
-                                console.log(menuItem);
-                                // Add or Remove the class on clicking the table row
-                                $('#' + event.target.id).parent().next().after(MenuController.getExpandedView(menuItem));
+
+                                if(event.target.className == "menu-item-title"){
+                                    //$('.menu-item-expanded-container').remove();
+                                    var menuItem = $('#' + event.target.id).data('menuItem');
+                                    console.log(menuItem);
+                                    console.log($("#menu-item-expanded_" + menuItem.Id).length == 0);
+                                    if($("#menu-item-expanded_" + menuItem.Id).length == 0){
+                                        $('#' + event.target.id).parent().next().after(MenuController.getExpandedView(menuItem));
+                                    }
+                                    else{
+                                        $("#menu-item-expanded_" + menuItem.Id).toggle();
+                                    }
+                                    // Add or Remove the class on clicking the table row
+
+                                }
+                                else if(event.target.className == "minus-image"){
+                                        
+                                    console.log($('#' + event.target.id));
+                                    var id = $('#' + event.target.id).data('id');
+                                    var quantity = parseInt($('#quantity_' +id).data('quantity'));
+                                    if(quantity > 0){
+                                        quantity--;
+                                        $('#quantity_' +id).data('quantity', quantity);
+                                        $('#quantity_' +id).val(quantity);
+                                    }
+
+                                    console.log(quantity);
+
+                                }
+                                else if(event.target.className == "plus-image"){
+
+                                    console.log($('#' + event.target.id));
+                                    var id = $('#' + event.target.id).data('id');
+                                    var quantity = parseInt($('#quantity_' +id).data('quantity'));
+                                    quantity++;
+                                    $('#quantity_' +id).data('quantity', quantity);
+                                    $('#quantity_' +id).val(quantity);
+                                    console.log(quantity);
+
+                                }
+                                else if(event.target.className == "link-red"){
+                                    var id = $('#' + event.target.id).data('id');
+                                    $("#menu-item-expanded_" + id).toggle();
+                                }
+                                else if(event.target.className == "btn"){
+                                    OrderController.addItemToCart()
+                                }
+                                else{
+                                    console.log(event.target.className);
+                                    console.log("Other menu events");
+                                }
+
 
                             });
                         });

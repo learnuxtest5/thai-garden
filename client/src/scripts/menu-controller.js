@@ -37,7 +37,7 @@ var MenuController = function () {
     }
 
     function getExpandedView(model){
-        var htmlExpandedItem = "<div class='menu-item-expanded-container'>" +
+        var htmlExpandedItem = "<div id='menu-item-expanded_" + model.Id + "' ><div class='menu-item-expanded-container'>" +
             "<span class='menu-item-img'><img src='" + model.ImageUrl +  "' alt='food pic' height='130' width='150'></span>"
         if(model.HasVariation){
             htmlExpandedItem += createVariations(model.Variations);
@@ -45,14 +45,35 @@ var MenuController = function () {
 
 
         htmlExpandedItem += "</div>"
+        htmlExpandedItem += createButtonBar(model.Id);
+        
         console.log(htmlExpandedItem);
         return htmlExpandedItem;
     }
+
+    function createButtonBar(elementID){
+        var htmlButtonBar = "<div class='menu-item-expanded-button-bar'>"
+        htmlButtonBar += "<span ><img id='minus_" + elementID +"' data-id='" + elementID +"'' class='minus-image' src='img/blueMinus.jpg' alt='button minus' height='38' width='38 '></span>"
+        htmlButtonBar += "<span class='menu-item-quantity-container'><input id='quantity_" + elementID +"' class='menu-item-quantity' data-quantity='0' value='0' type='text' name='quantity'></span>"
+        htmlButtonBar += "<span ><img id='plus_" + elementID +"' data-id='" + elementID +"'' class='plus-image' src='img/bluePlus.jpg' alt='button plus' height='38' width='38 '></span>"
+        htmlButtonBar += "<span class='button'><a class='btn'>Add to Cart</a></span><span class='button'><a id='close_" + elementID +"' data-id='" + elementID +"'' class='link-red'>Close</a></span>";
+        htmlButtonBar += "</div>";
+        return htmlButtonBar;
+    }
+
     function createVariations(variations){
         var variationsHtml = "<span class='variation-item-container'>";
         for (var i = 0; i < variations.length; i++) {
             console.log("Variations:" + JSON.stringify(variations));
-            variationsHtml += "<span class='variation-item'><span class='variation-option'><input type='radio' name='variations' value='" + variations[i].id +  "'><span class='variation-item-title'>" + variations[i].Title.replace(/[0-9]/g, '') + "</span></span><span class='variation-item-price'>€" + variations[i].Price.toFixed(2) + "</span>" +
+            var variationPrice = variations[i].Price.toFixed(2) ;
+            if(variationPrice == 0.00){
+                variationPrice = "";
+            }
+            else{
+                variationPrice = "€" + variationPrice;
+            }
+
+            variationsHtml += "<span class='variation-item'><span class='variation-option'><input type='radio' name='variations' value='" + variations[i].id +  "'><span class='variation-item-title'>" + variations[i].Title.replace(/[0-9]/g, '') + "</span></span><span class='variation-item-price'>" + variationPrice + "</span>" +
                 "</span>";
         }
         variationsHtml += "</span>";
