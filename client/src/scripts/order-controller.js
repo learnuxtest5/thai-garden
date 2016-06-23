@@ -27,7 +27,7 @@ var OrderController = function () {
         updateCart(cartItems);
     }
 
-    function sendOrder(orderType, address, collectionTime, paymentType, cardNumber, cardType, expiryDate, custName, custPhone) {
+    function sendOrder(orderType, address, collectionTime, paymentType, cardNumber, cardType, custName, custPhone) {
         var data = {
             orderItems: retrieveCart().items,
             discount: retrieveCart().discount,
@@ -38,8 +38,7 @@ var OrderController = function () {
             paymentType: paymentType,
             creditCard: {
                 cardNumber: cardNumber,
-                cardType: cardType,
-                expiryDate: expiryDate
+                cardType: cardType
             },
             customer: {
                 custName: custName,

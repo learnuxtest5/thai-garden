@@ -23,8 +23,7 @@
     "paymentType": "Card",
     "creditCard": {
       "cardNumber": "0123456789012345",
-      "cardType": "Mastercard",
-      "expiryDate": "01/01/2017"
+      "cardType": "Mastercard"
     },
     "customer": {
       "custName": "John Smith",
