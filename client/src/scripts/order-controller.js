@@ -91,6 +91,7 @@ var OrderController = function () {
     }
 
     function updateCart(cartItems) {
+        console.log(JSON.stringify(cartItems));
         sessionStorage.setItem('cart.items', JSON.stringify(cartItems));
         sessionStorage.setItem('cart.totalPrice', Calculator.calculateTotal(cartItems));
     }
