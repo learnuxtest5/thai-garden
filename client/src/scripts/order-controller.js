@@ -126,7 +126,6 @@ var OrderController = function () {
                                     "<td class='order-details-sub-title'>Add Coupon</td>" +
                                     "<td>" +
                                         "<input id='coupon-value' type='text'/>" +
-                                    "</td>" +
                                     "<td>" +
                                         "<span class='button'><a class='btn add-coupon'>Apply</a></span>" +
                                     "</td>" +
@@ -191,13 +190,13 @@ var OrderController = function () {
                                  "<tr>" +
                                      "<td><p class='order-details-sub-title'>Name</p></td>" +
                                      "<td>" +
-                                         "<input id='customer-name' type='text' required/>" +
+                                         "<input id='customer-name' placeholder='Name' type='text' required/>" +
                                      "</td>" +
                                  "</tr>" +
                                  "<tr>" +
                                      "<td><p class='order-details-sub-title'>Mobile No.</p></td>" +
                                      "<td>" +
-                                         "<input id='customer-phone' type='text' required/>" +
+                                         "<input id='customer-phone' placeholder='Phone' type='text' required/>" +
                                      "</td>" +
                                  "</tr>" +
                              "</table><div class='buttons-div'>" +
