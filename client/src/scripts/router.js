@@ -104,7 +104,7 @@ var Router = function () {
                                             variations.push(variationsEls.val());
                                         }
                                         //restaurantId, categoryId, itemId, price, quantity, variations
-                                        OrderController.addItemToCart(restaurantId, sectionId, menuItem.Id, menuItem.Price, quantity, variations );
+                                        OrderController.addItemToCart(restaurantId, sectionId, menuItem.Id, menuItem.Title, menuItem.Price, quantity, variations);
                                     }
                                     else{
                                         alert("Your quantity is zero!! Please select a quantity");

@@ -103,4 +103,45 @@
     .hidden {
         display: none;
     }
+
+    .invisible {
+        visibility: hidden;
+    }
+
+    .order-details table tr:last-child td {
+        font-weight: bold;
+    }
+
+    // make sure the cart is behind page content and that it stays in place on scroll
+    .shopping-cart {
+        /* critical sizing and position styles */
+         width: 100%;
+         height: 100%;
+         position: fixed;
+         top: 0;
+         right: 0;
+         bottom: 0;
+         left: 0;
+         z-index: 0;
+    }
+
+    // make sure the site content completely covers the shopping cart
+    .content-container {
+        min-width: 100%;
+        min-height: 100%;
+        background-color: white; // or else cart will show through?
+        position: relative;
+        top: 0;
+        bottom: 100%;
+        left: 0;
+        z-index: 1;
+    }
+
+    input:required:invalid, input:focus:invalid {
+        border: 1px solid red;
+    }
+
+    input:required:valid {
+        border: 1px solid green;
+    }
 }
