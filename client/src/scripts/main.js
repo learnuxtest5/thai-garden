@@ -17,6 +17,10 @@ $(document).ready(function () {
             console.log('add coupon');
             var discount = parseFloat($('#coupon-value').val()) / 100.0;
             OrderController.addCoupon(discount);
+
+            $('.shopping-cart').remove();
+            $('.flexbox-center-item').prepend(OrderController.getView());
+            setupHandlers();
         });
 
         $('.proceed-button').click(function () {

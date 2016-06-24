@@ -110,7 +110,7 @@ var OrderController = function () {
 
                              var items = retrieveCart().items;
                              var totalPrice = retrieveCart().totalPrice;
-                             var discount = parseFloat(retrieveCart().discount);
+                             var discount = 1.00 - parseFloat(retrieveCart().discount);
 
                              for (var i=0; i<items.length; i++) {
                              htmlView +=
