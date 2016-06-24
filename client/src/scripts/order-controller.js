@@ -191,13 +191,13 @@ var OrderController = function () {
                                  "<tr>" +
                                      "<td>Name</td>" +
                                      "<td>" +
-                                         "<input id='customer-name' type='text'/>" +
+                                         "<input id='customer-name' type='text' required/>" +
                                      "</td>" +
                                  "</tr>" +
                                  "<tr>" +
                                      "<td>Mobile No.</td>" +
                                      "<td>" +
-                                         "<input id='customer-phone' type='text'/>" +
+                                         "<input id='customer-phone' type='text' required/>" +
                                      "</td>" +
                                  "</tr>" +
                              "</table>" +
