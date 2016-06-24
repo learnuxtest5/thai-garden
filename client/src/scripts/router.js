@@ -18,10 +18,14 @@ var Router = function () {
 
 
                     document.getElementById("content-container").innerHTML = LocationController.getView(response);
-                    $('body').on('click', '#locationList', function (event) {
-                        console.log(event.target.getAttribute("data-id"));
-                        // Add or Remove the class on clicking the table row
-                        window.location.hash = "restaurants/" + event.target.getAttribute("data-id");
+                    $('body').on('click', '.locations-container-item', function (event) {
+                        var par = $(event.target).parent();
+                        console.log($(par).data('id'));
+                        if($(par).prop('className') == "locations-container-item"){
+                            window.location.hash = "restaurants/" + $(par).data('id')
+                        }
+                        
+
                     });
                 });
                 break;
