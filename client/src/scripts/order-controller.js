@@ -115,9 +115,9 @@ var OrderController = function () {
 
                              for (var i=0; i<items.length; i++) {
                              htmlView +=
-                                "<tr>" +
+                                 "<tr>" +
                                     "<td>" + items[i].itemName + "</td>" +
-                                    "<td>$" + items[i].price + "</td>" +
+                                    "<td>€" + items[i].price + "</td>" +
                                 "</tr>";
                              }
 
@@ -133,7 +133,7 @@ var OrderController = function () {
                                 "</tr>" +
                                "<tr>" +
                                     "<td>Total</td>" +
-                                    "<td>$" + (totalPrice * discount).toFixed(2) + "</td>" +
+                                    "<td>€" + (totalPrice * discount).toFixed(2) + "</td>" +
                                "</tr>" +
                              "</table>" +
                              "<button class='proceed-button'>Proceed to checkout</button>" +
