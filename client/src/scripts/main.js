@@ -6,30 +6,30 @@ $(document).ready(function () {
     $('[class^=cart-logo-]').click(function () {
         console.log('show shopping cart');
 
-        // show the cart using class applied by jQuery
+        $('#shopping-cart').removeClass('hidden');
     });
 
     $('.hide-cart').click(function () {
         console.log('hide shopping cart');
 
-        // hide the cart using class applied by jQuery
+        $('#shopping-cart').addClass('hidden');
     });
 
     $('.add-coupon').click(function () {
         console.log('add coupon');
 
-        var discount = $('.coupon-value').text();
+        var discount = $('.coupon-value input').text();
         discount = parseFloat(discount) / 100.0;
 
         OrderController.addCoupon(discount);
     });
 
-    $('.proceed-checkout').click(function () {
+    $('.proceed-button').click(function () {
         console.log('proceed to checkout');
 
-        // hide the proceed button using jQuery
+        $('.proceed-button').addClass('hidden');
 
-        // show the payment details using jQuery
+        $('#checkout-details').removeClass('hidden');
     });
 
     $('.place-order').click(function () {
@@ -37,20 +37,21 @@ $(document).ready(function () {
 
         //TODO: validate inputs before they can proceed
 
-        var orderType = $('.order-type input:checked').text();
-        var deliveryAddress = $('.delivery-address input').text();
-        var collectionTime = $('.collection-time option:selected').text()
-        var paymentType = $('.payment-type input[type="radio"]:checked').text();
-        var cardNumber = $('.payment-type input#card-number').text();
-        var cardType = $('.payment-type input#card-type').text();
-        var name = $('.customer-name input').text();
-        var phoneNumber = $('.customer-phone input').text();
+        var orderType = $('#checkout-details .order-type input:checked').text();
+        var deliveryAddress = $('#checkout-details .delivery-address input').text();
+        var collectionTime = $('#checkout-details .collection-time option:selected').text()
+        var paymentType = $('#checkout-details .payment-type input[type="radio"]:checked').text();
+        var cardNumber = $('#checkout-details .payment-type input#card-number').text();
+        var cardType = $('#checkout-details .payment-type input#card-type').text();
+        var name = $('#checkout-details .customer-name input').text();
+        var phoneNumber = $('#checkout-details .customer-phone input').text();
 
         OrderController.sendOrder(
             orderType, deliveryAddress, collectionTime,
             paymentType, cardNumber, cardType,
             name, phoneNumber).then(function (response) {
             // show the confirmation when the order is placed
+                console.log("Confirmed order", JSON.parse(response));
         });
     });
 });

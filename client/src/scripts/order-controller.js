@@ -97,6 +97,7 @@ var OrderController = function () {
     function clearCart() {
         sessionStorage.removeItem('cart.items');
         sessionStorage.removeItem('cart.totalPrice');
+        sessionStorage.removeItem('cart.discount');
     }
 
     return {
