@@ -106,6 +106,9 @@ var OrderController = function () {
         var htmlView = "";
         htmlView += "<div class='shopping-cart'>" +
                          "<div class='order-details'>" +
+
+                             "<button class='hide-cart'>X</button>" +
+
                              "<h2>Your Order</h2>" +
                              "<table>";
 
