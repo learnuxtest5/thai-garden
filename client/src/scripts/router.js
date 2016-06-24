@@ -34,7 +34,7 @@ var Router = function () {
                         MenuController.getMenu(response[0].id).then(function (response) {
                             //Utils.loadTemplate("templates/menu.html", response);
                             //console.log("Menu" +  JSON.stringify(response));
-                            document.getElementById("content-container").innerHTML = MenuController.getView(response);
+                            document.getElementById("content-container").innerHTML = MenuController.getView(response, id);
                             $('body').on('click', '.menu-section-container', function (event) {
                                 //remove all other containers that are expanded
 
@@ -82,7 +82,30 @@ var Router = function () {
                                     $("#menu-item-expanded_" + id).toggle();
                                 }
                                 else if(event.target.className == "btn"){
-                                    OrderController.addItemToCart()
+                                    var id = $('#' + event.target.id).data('id');
+                                    console.log(id);
+                                    var quantity = parseInt($('#quantity_' +id).data('quantity'));
+                                    var menuItem = $('#' + id).data('menuItem');
+                                    var restaurantId = $('#' + id).data('restaurantId');
+                                    var sectionId = $('#' + id).data('sectionId');
+                                    var variations = [];
+                                    console.log(menuItem);
+                                    console.log(sectionId);
+                                    console.log(restaurantId);
+                                    if(quantity > 0){
+                                        console.log($('.variations_' + id));
+                                        if($('.variations_' + id + ':checked').length > 0){
+                                            var variationsEls = $('.variations_' + id + ':checked');
+                                            console.log(variationsEls.val());
+                                            variations.push(variationsEls.val());
+                                        }
+                                        //restaurantId, categoryId, itemId, price, quantity, variations
+                                        OrderController.addItemToCart(restaurantId, sectionId, menuItem.Id, menuItem.Price, quantity, variations );
+                                    }
+                                    else{
+                                        alert("Your quantity is zero!! Please select a quantity");
+                                    }
+                                    //OrderController.addItemToCart()
                                 }
                                 else{
                                     console.log(event.target.className);
