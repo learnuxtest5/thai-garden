@@ -101,10 +101,13 @@ var Router = function () {
                                         if($('.variations_' + id + ':checked').length > 0){
                                             var variationsEls = $('.variations_' + id + ':checked');
                                             console.log(variationsEls.val());
-                                            variations.push(variationsEls.val());
+                                            variations.push(JSON.parse(variationsEls.val()));
                                         }
                                         //restaurantId, categoryId, itemId, price, quantity, variations
                                         OrderController.addItemToCart(restaurantId, sectionId, menuItem.Id, menuItem.Title, menuItem.Price, quantity, variations);
+                                        $('.shopping-cart').remove();
+                                        $('#flexbox-desktop-shopping-cart').html(OrderController.getView());
+                                        setupHandlers();
                                     }
                                     else{
                                         alert("Your quantity is zero!! Please select a quantity");

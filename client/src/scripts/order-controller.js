@@ -106,7 +106,7 @@ var OrderController = function () {
         var htmlView = "";
         htmlView += "<div class='shopping-cart'>" +
                          "<div class='order-details'>" +
-                             "<h2>Your Order</h2>" +
+                             "<p class='order-details-title'>Your Order</p>" +
                              "<table>";
 
                              var items = retrieveCart().items;
@@ -116,34 +116,34 @@ var OrderController = function () {
                              for (var i=0; i<items.length; i++) {
                              htmlView +=
                                  "<tr>" +
-                                    "<td>" + items[i].itemName + "</td>" +
-                                    "<td>€" + items[i].price + "</td>" +
+                                    "<td class='order-details-sub-title'>" + items[i].itemName + "</td>" +
+                                    "<td class='order-details-price'>€" + items[i].price + "</td>" +
                                 "</tr>";
                              }
 
                              htmlView +=
                                 "<tr>" +
-                                    "<td>Add Coupon</td>" +
+                                    "<td class='order-details-sub-title'>Add Coupon</td>" +
                                     "<td>" +
                                         "<input id='coupon-value' type='text'/>" +
                                     "</td>" +
                                     "<td>" +
-                                        "<button class='add-coupon'>Apply</button>" +
+                                        "<span class='button'><a class='btn add-coupon'>Apply</a></span>" +
                                     "</td>" +
                                 "</tr>" +
                                "<tr>" +
                                     "<td>Total</td>" +
                                     "<td>€" + (totalPrice * discount).toFixed(2) + "</td>" +
                                "</tr>" +
-                             "</table>" +
-                             "<button class='proceed-button'>Proceed to checkout</button>" +
-                         "</div>" +
+                             "</table><div class='buttons-div'>" +
+                             "<span class='button'><a class='btn proceed-button'>Proceed With Order</a></span>" +
+                         "</div></div>" +
 
                          "<div id='checkout-details' class='hidden'>" +
-                             "<h2>Checkout</h2>" +
+                             "<p class='order-details-title'>Checkout</p>" +
                              "<table>" +
                                  "<tr>" +
-                                     "<td>Order</td>" +
+                                     "<td><p class='order-details-sub-title'>Order</p></td>" +
                                      "<td>" +
                                          "<form id='order-type'>" +
                                              "<input type='radio' name='orderType' value='Collection' checked> Collection<br>" +
@@ -152,13 +152,13 @@ var OrderController = function () {
                                      "</td>" +
                                  "</tr>" +
                                  "<tr id='delivery-details' class='invisible'>" +
-                                     "<td>Delivery Address</td>" +
+                                     "<td class='order-details-sub-title'>Delivery Address</td>" +
                                      "<td>" +
                                          "<input id='delivery-address' type='text'/>" +
                                      "</td>" +
                                  "</tr>" +
                                  "<tr>" +
-                                     "<td>Collect at</td>" +
+                                     "<td class='order-details-sub-title'>Collect at</td>" +
                                      "<td>" +
                                          "<select id='collection-time'>" +
                                              "<option value='ASAP' selected>ASAP</option>" +
@@ -172,7 +172,7 @@ var OrderController = function () {
                                      "</td>" +
                                  "</tr>" +
                                  "<tr>" +
-                                     "<td>Pay with</td>" +
+                                     "<td class='order-details-sub-title'>Pay with</td>" +
                                      "<td>" +
                                          "<form id='payment-type'>" +
                                              "<input type='radio' name='paymentType' value='Cash' checked> Cash<br>" +
@@ -189,21 +189,21 @@ var OrderController = function () {
                                      "</td>" +
                                  "</tr>" +
                                  "<tr>" +
-                                     "<td>Name</td>" +
+                                     "<td><p class='order-details-sub-title'>Name</p></td>" +
                                      "<td>" +
                                          "<input id='customer-name' type='text' required/>" +
                                      "</td>" +
                                  "</tr>" +
                                  "<tr>" +
-                                     "<td>Mobile No.</td>" +
+                                     "<td><p class='order-details-sub-title'>Mobile No.</p></td>" +
                                      "<td>" +
                                          "<input id='customer-phone' type='text' required/>" +
                                      "</td>" +
                                  "</tr>" +
-                             "</table>" +
+                             "</table><div class='buttons-div'>" +
 
-                             "<button class='cancel-order'>Cancel</button>" +
-                             "<button class='place-order'>Place Order</button>" +
+                             "<span class='button'><a class='btn cancel-order'>Cancel</a></span>" +
+                             "<span class='button'><a class='btn place-order'>Place Order</a></span></div>" +
                          "</div>" +
                      "</div>";
 

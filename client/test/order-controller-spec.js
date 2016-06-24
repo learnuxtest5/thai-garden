@@ -41,7 +41,7 @@ describe('order-controller-spec', function () {
                 variations: [
                     {
                         id: 4,
-                        price: 6.50
+                        Price: 6.50
                     }
                 ]
             };

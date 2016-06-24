@@ -1,7 +1,6 @@
 .main-content {
 
     display: flex;
-    align-items: center;
     justify-content: center;
     height: 100%;
 
@@ -76,29 +75,10 @@
         border-top-right-radius: 10px;
         border-top-left-radius: 10px;
         flex: 1;
+        display: flex;
     }
 
-    .header-image-lg{
-        content:url("../img/ThaiGarden-Logo-Dsktop.png");
-        display: block; margin: 0 auto;
-    }
-    .header-image-md{
-        content:url("../img/ThaiGarden-Logo@2x.png");
-    }
-    .header-image-sm{
-        content:url("../img/ThaiGarden-Logo@1x.png");
-        display: block; margin: 0 auto;
-        padding-bottom: 10px;
-        padding-top: 5px;
-    }
 
-    .cart-logo-md {
-        content: url("../img/Shopping Basket icon@2x.png");
-    }
-
-    .cart-logo-sm {
-        content: url("../img/Shopping Basket icon.png");
-    }
 
     .hidden {
         display: none;
@@ -108,22 +88,69 @@
         visibility: hidden;
     }
 
-    .order-details table tr:last-child td {
-        font-weight: bold;
+
+
+
+    #flexbox-desktop-shopping-cart{
+        height: 100%;
+
+
+    }
+    .checkout-details{
+
+        flex:1;
+    }
+    .shopping-cart{
+
+        padding: 10px 10px 10px 10px;
+        background: rgb(255, 255, 255); /* Fall-back for browsers that don't
+                                    support rgba */
+        border-bottom-right-radius: 10px;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+        border-top-right-radius: 10px;
+
+        flex: 1;
+        .buttons-div{
+            padding-top: 20px;
+            padding-bottom: 20px;
+
+        }
+        .order-details-title{
+            font-size: 24px;
+            color: #406840;
+            font-family: Helvetica, Arial, sans-serif;
+            padding-top: 20px;
+            padding-bottom: 17px;
+            margin-bottom: 25px;
+
+            text-align: left;
+        }
+        .order-details-sub-title{
+            font-size: 18px;
+            color: #406840;
+            font-family: Helvetica, Arial, sans-serif;
+            padding-top: 20px;
+            padding-bottom: 17px;
+            margin-bottom: 25px;
+
+            text-align: left;
+        }
+        .order-details-price{
+            font-size: 18px;
+            color: #000;
+            font-family: Helvetica, Arial, sans-serif;
+            text-align: right;
+            flex: 1;
+        }
+
+        .order-details table tr:last-child td {
+            font-weight: bold;
+        }
     }
 
-    // make sure the cart is behind page content and that it stays in place on scroll
-    .shopping-cart {
-        /* critical sizing and position styles */
-         width: 100%;
-         height: 100%;
-         position: fixed;
-         top: 0;
-         right: 0;
-         bottom: 0;
-         left: 0;
-         z-index: 0;
-    }
+
+
 
     // make sure the site content completely covers the shopping cart
     .content-container {
@@ -143,5 +170,76 @@
 
     input:required:valid {
         border: 1px solid green;
+    }
+}
+.header-image-lg{
+    content:url("../img/ThaiGarden-Logo-Dsktop.png");
+    display: block; margin: 0 auto;
+}
+.header-image-md{
+    content:url("../img/ThaiGarden-Logo@2x.png");
+}
+.header-image-sm{
+    content:url("../img/ThaiGarden-Logo@1x.png");
+    padding-bottom: 10px;
+    padding-top: 5px;
+    align-items: center;
+}
+
+.cart-logo-md {
+    content: url("../img/Shopping Basket icon@2x.png");
+
+    float: right;
+
+}
+
+.cart-logo-sm {
+    content: url("../img/Shopping Basket icon.png");
+    float: right;
+
+}
+
+.button{
+    padding-top: 7px;
+    padding-left: 10px;
+    .btn {
+        background: #2c77db;
+        background-image: -webkit-linear-gradient(top, #2c77db, #2980b9);
+        background-image: -moz-linear-gradient(top, #2c77db, #2980b9);
+        background-image: -ms-linear-gradient(top, #2c77db, #2980b9);
+        background-image: -o-linear-gradient(top, #2c77db, #2980b9);
+        background-image: linear-gradient(to bottom, #2c77db, #2980b9);
+        -webkit-border-radius: 5;
+        -moz-border-radius: 5;
+        border-radius: 5px;
+        font-family: Arial;
+        color: #ffffff;
+        font-size: 20px;
+        padding: 10px 20px 10px 20px;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .btn:hover {
+        background: #3cb0fd;
+        background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+        background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+        background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+        background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+        background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+        text-decoration: none;
+        cursor: pointer;
+    }
+    .link-red{
+        font-size: 18px;
+        color: #C62C02;
+        font-family: Helvetica, Arial, sans-serif;
+        cursor: pointer;
+    }
+    .link-red:hover{
+
+        color: #ae180b;
+        cursor: pointer;
+
     }
 }

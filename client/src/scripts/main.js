@@ -4,7 +4,8 @@ $(document).ready(function () {
     $(window).trigger('hashchange');
 
     $('[class^=cart-logo-]').click(function () {
-        $('.flexbox-center-item').prepend(OrderController.getView());
+        
+        $('#flexbox-desktop-shopping-cart').html(OrderController.getView());
         setupHandlers();
     });
 
